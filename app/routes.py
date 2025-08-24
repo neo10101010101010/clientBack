@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from .database import db
 from .models import Customer
-from .validators import validate_customer_data
+#from .validators import validate_customer_data
 from datetime import datetime
 
 api_bp = Blueprint('api', __name__)
@@ -54,13 +54,13 @@ def create_customer():
         data = request.get_json()
         
         # Validar datos
-        is_valid, errors = validate_customer_data(data)
-        if not is_valid:
-            return jsonify({
-                'success': False,
-                'message': 'Datos de entrada inválidos',
-                'errors': errors
-            }), 400
+        #is_valid, errors = validate_customer_data(data)
+        #if not is_valid:
+        #    return jsonify({
+        #        'success': False,
+        #        'message': 'Datos de entrada inválidos',
+        #        'errors': errors
+        #    }), 400
         
         # Crear nuevo cliente usando ORM
         customer = Customer(
@@ -105,13 +105,13 @@ def update_customer(customer_id):
             }), 404
         
         # Validar datos
-        is_valid, errors = validate_customer_data(data, is_update=True, customer_id=customer_id)
-        if not is_valid:
-            return jsonify({
-                'success': False,
-                'message': 'Datos de entrada inválidos',
-                'errors': errors
-            }), 400
+        #is_valid, errors = validate_customer_data(data, is_update=True, customer_id=customer_id)
+        #if not is_valid:
+        #    return jsonify({
+        #        'success': False,
+        #        'message': 'Datos de entrada inválidos',
+        #        'errors': errors
+        #    }), 400
         
         # Actualizar cliente usando ORM
         customer.customer_type = data['customer_type']

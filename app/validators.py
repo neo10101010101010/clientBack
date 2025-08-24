@@ -66,7 +66,8 @@ def validate_phone(phone):
         return False, 'Formato de teléfono inválido. Debe contener entre 10 y 15 dígitos'
     return True, ''
 
-def validate_customer_data(data, is_update=False, customer_id=None):
+
+#def validate_customer_data(data, is_update=False, customer_id=None):
     errors = {}
     
     # Validar tipo de cliente
@@ -110,3 +111,4 @@ def validate_customer_data(data, is_update=False, customer_id=None):
             errors['phone'] = message
     
     return len(errors) == 0, errors
+#
